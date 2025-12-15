@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        /* --- General Styles --- */
+        :root {
+            --primary-color: #2563eb; /* Blue accent */
+            --bg-color: #f8f9fa;      /* Light gray background */
+            --text-color: #333;       /* Dark text */
+            --nav-bg: #fff;           /* White navbar */
+            --section-padding: 60px 20px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for nav links */
+        }
+
+        /* --- Navigation --- */
+        header {
+            background: var(--nav-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f8f9fa 100%);
+            padding: 0 20px;
+            margin-top: 60px; /* Offset for fixed header */
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* --- Common Section Styles --- */
+        section {
+            padding: var(--section-padding);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- About Section --- */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: center; /* Change to left if you add an image */
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-weight: 500;
+        }
+
+        /* --- Projects Section --- */
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        /* --- Education & Certifications --- */
+        .edu-item, .cert-item {
+            background: white;
+            padding: 20px;
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* --- Contact Section --- */
+        .contact-info {
+            text-align: center;
+        }
+
+        .contact-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .contact-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; } /* Simplified for demo (normally needs hamburger menu) */
+            nav { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">My Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Hello, I'm Sidharthan H</h1>
+        <p>A passionate Developer building meaningful digital solutions.</p>
+        <a href="#contact" class="btn">Get in Touch</a>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    I am a Computer Science Engineering student passionate about coding and clean, efficient design. 
+                    I enjoy building meaningful solutions and exploring new technologies. At present, I am working on 
+                    Python, Java, and enhancing my problem-solving abilities using Data Structures and Algorithms.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C / C++</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">HTML & CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">ReactJS</span>
+            <span class="skill-tag">Git & GitHub</span>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-card">
+            <h3>Movie Ticket Booking System</h3>
+            <p>A software solution to to book movie tickets efficiently. Features include booking tickets, admin management, and ticket amount calculation.</p>
+        </div>
+       
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="edu-item">
+            <h3>Bachelor of Engineering (B.E.) in CSE</h3>
+            <p><strong>SRM Easwari Engineering College</strong> | 2nd Year</p>
+            <p>Building strong foundations in programming, algorithms, and software development.</p>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="cert-item">
+            <p><strong>Python Essentials 1</strong> – Cisco</p>
+        </div>
+        <div class="cert-item">
+            <p><strong>Python Essentials 2</strong> – Cisco</p>
+        </div>
+        <div class="cert-item">
+            <p><strong>Introduction to Modern AI</strong> – Cisco</p>
+        </div>
+        <div class="cert-item">
+            <p><strong>Security and Connectivity Support</strong> – Cisco</p>
+        </div>
+        <div class="cert-item">
+            <p><strong>Industry 4.0 & IIoT</strong> – NPTEL</p>
+        </div>
+        <div class="cert-item">
+            <p><strong>Core Java Programming</strong> – Infosys</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <p>Feel free to reach out to me for collaborations or just a friendly chat.</p>
+            <div class="contact-links">
+                <a href="https://mail.google.com/mail/u/0/#inbox">Email Me</a>
+                <a href="https://www.linkedin.com/in/sidharthan-hariharasudhan-1222ab328/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/sidharth634" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sidharthan H — Portfolio</p>
+    </footer>
+
+</body>
+</html>
